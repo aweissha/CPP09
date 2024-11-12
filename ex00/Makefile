@@ -9,6 +9,7 @@ CXXFLAGS = -Wall -Werror -Wextra -std=c++11
 RM = rm -f
 
 SRCS =		$(SRC_DIR)main.cpp \
+			$(SRC_DIR)BitcoinExchange.cpp \
 
 
 

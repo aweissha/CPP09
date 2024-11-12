@@ -34,3 +34,11 @@ void BitcoinExchange::createDataMap(const std::string& inputFile)
 	}
 	file.close();
 }
+
+double BitcoinExchange::getPrice(const std::string &date) const
+{
+	auto it = _priceData.lower_bound(date);
+	if (it == _priceData.end() || it->first != date)
+		--it;
+	return it->second;
+}
