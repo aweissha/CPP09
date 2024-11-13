@@ -14,18 +14,15 @@
 
 bool isValidDate(const std::string& date)
 {
-	char				year[4];
-	char				month[2];
-	char				day[2];
+	std::string year = date.substr(0, 4);
+	std::string month = date.substr(5, 2);
+	std::string day = date.substr(8, 2);
 
-	year[date.copy(year, 4, 0)] = '\0';
-	month[date.copy(month, 2, 5)] = '\0';
-	day[date.copy(day, 2, 8)] = '\0';
-	if (atoi(year) > 2023)
+	if (stoi(year) > 2022)
 		return false;
-	if (atoi(month) > 12)
+	if (stoi(month) > 12)
 		return false;
-	if (atoi(day) > 31)
+	if (stoi(day) > 31)
 		return false;
 	return true;
 }
@@ -67,7 +64,7 @@ int main(int argc, char **argv)
 				double amount = std::stod(amountStr);
 				if (!isValidValue(amount))
 				{
-					std::cerr << (amount < 0 ? "Error: not a positive number.\n" : "Error: too large a number.\n");
+					std::cerr << (amount < 0 ? "Error: not a positive number." : "Error: too large a number.")<< std::endl;
 					continue;
 				}
 				double price = exchange.getPrice(date);
@@ -75,13 +72,12 @@ int main(int argc, char **argv)
 				std::cout << date << " => " << amount << " = " << result << "\n";
 			}
 			else
-				std::cerr << "Error: bad input" << std::endl;
+				std::cerr << "Error: bad input format." << std::endl;
 		}
 		inputFile.close();
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << "hello" << std::endl;
 		std::cerr << e.what() << std::endl;
 		return 1;
 	}

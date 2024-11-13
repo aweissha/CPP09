@@ -6,7 +6,7 @@
 /*   By: aweissha <aweissha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 15:07:02 by aweissha          #+#    #+#             */
-/*   Updated: 2024/11/12 16:55:02 by aweissha         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:48:44 by aweissha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,12 @@ class BitcoinExchange
 	void	createDataMap(const std::string& fileName);
 
 	public:
+	BitcoinExchange();
 	BitcoinExchange(const std::string& fileName);
+	~BitcoinExchange();
+	BitcoinExchange(const BitcoinExchange& original);
+	BitcoinExchange& operator=(const BitcoinExchange& original);
+	
 	double getPrice(const std::string& date) const;
 };
 

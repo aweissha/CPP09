@@ -12,9 +12,25 @@
 
 #include "../include/BitcoinExchange.hpp"
 
+BitcoinExchange::BitcoinExchange(){}
+
 BitcoinExchange::BitcoinExchange(const std::string& fileName)
 {
 	createDataMap(fileName);
+}
+
+BitcoinExchange::~BitcoinExchange(){}
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& original)
+{
+	*this = original;
+}
+
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& original)
+{
+	if (this != &original)
+		this->_priceData = original._priceData;
+	return *this;
 }
 
 void BitcoinExchange::createDataMap(const std::string& inputFile)
