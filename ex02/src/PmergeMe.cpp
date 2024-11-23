@@ -6,7 +6,7 @@
 /*   By: aweissha <aweissha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:18:03 by aweissha          #+#    #+#             */
-/*   Updated: 2024/11/21 15:55:33 by aweissha         ###   ########.fr       */
+/*   Updated: 2024/11/23 12:08:49 by aweissha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void PmergeMe::parseInput(int argc, char **argv)
 
 bool PmergeMe::hasOnlyDigits(const std::string& str) const
 {
+	if (str.empty())
+		return false;
 	for (size_t i = 0; i < str.size(); i++)
 	{
 		if (!isdigit(str[i]))
@@ -109,7 +111,6 @@ void PmergeMe::sortingAlgorithmDeq(std::deque<int>& deq)
 
 	for (std::deque<int>::const_iterator it = deq.begin(); it != deq.end(); it++)
 	{
-		// std::cout << "hello" << std::endl;
 		std::deque<int>::const_iterator first = it++;
 		if (it == deq.end())
 		{
@@ -146,7 +147,6 @@ void PmergeMe::sortingAlgorithmVec(std::vector<int>& vec)
 
 	for (std::vector<int>::const_iterator it = vec.begin(); it != vec.end(); it++)
 	{
-		// std::cout << "hello" << std::endl;
 		std::vector<int>::const_iterator first = it++;
 		if (it == vec.end())
 		{
