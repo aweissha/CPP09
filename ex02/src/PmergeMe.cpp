@@ -6,7 +6,7 @@
 /*   By: aweissha <aweissha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:18:03 by aweissha          #+#    #+#             */
-/*   Updated: 2024/11/23 12:08:49 by aweissha         ###   ########.fr       */
+/*   Updated: 2024/11/23 14:36:54 by aweissha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,24 @@ void PmergeMe::sort(int argc, char **argv)
 	printVecNumbers();
 
 	// Run algorithm for deque and track time
-	auto start = std::chrono::high_resolution_clock::now();
+	auto start_deq = std::chrono::high_resolution_clock::now();
 	sortingAlgorithmDeq(_deq);
-	auto end = std::chrono::high_resolution_clock::now();
-	auto durationDeq = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+	auto end_deq = std::chrono::high_resolution_clock::now();
+	double durationDeq = std::chrono::duration<double, std::micro>(end_deq - start_deq).count();
 
 	// Run algorithm for vector and track time
-	start = std::chrono::high_resolution_clock::now();
+	auto start_vec = std::chrono::high_resolution_clock::now();
 	sortingAlgorithmVec(_vec);
-	end = std::chrono::high_resolution_clock::now();
-	auto durationVec = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+	auto end_vec = std::chrono::high_resolution_clock::now();
+	double durationVec = std::chrono::duration<double, std::micro>(end_vec - start_vec).count();
 	
 	// Print the results
 	std::cout << "Deque after: ";
 	printDeqNumbers();
 	std::cout << "Vector after: ";
 	printVecNumbers();
-	std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque<int>: " << durationDeq.count() << " us" << std::endl;
-	std::cout << "Time to process a range of " << argc - 1 << " elements with std::vec<int>: " << durationVec.count() << " us" << std::endl;
+	std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque<int>: " << durationDeq << " us" << std::endl;
+	std::cout << "Time to process a range of " << argc - 1 << " elements with std::vec<int>: " << durationVec << " us" << std::endl;
 }
 
 void PmergeMe::parseInput(int argc, char **argv)
